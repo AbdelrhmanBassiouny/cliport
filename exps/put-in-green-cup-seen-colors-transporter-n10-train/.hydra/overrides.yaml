@@ -1,0 +1,7 @@
+- train.task=put-in-green-cup-seen-colors
+- train.agent=transporter
+- train.n_demos=10
+- train.n_val=100
+- train.n_steps=40000
+- train.exp_folder=exps
+- dataset.cache=False

@@ -8,15 +8,15 @@ import random
 import pybullet as p
 
 
-class PutInCupUnSeenColors(Task):
+class PutInGreenCupUnSeenColors(Task):
     """Put Sugar/Coffee in Cup base class and task."""
 
     def __init__(self):
         super().__init__()
         self.max_steps = 10
         self.pos_eps = 0.05
-        self.lang_template = "put {pick} in the {place} cup"
-        self.task_completed_desc = "done placing sugar and coffee in cup."
+        self.lang_template = "put sugar and coffee in the green cup"
+        self.task_completed_desc = "done placing sugar in cup."
 
     def reset(self, env):
         super().reset(env)
@@ -26,7 +26,8 @@ class PutInCupUnSeenColors(Task):
         n_cubes = 2
 
         all_color_names = self.get_colors()
-        cup_color_names = random.sample(all_color_names, 1)
+        # cup_color_names = random.sample(all_color_names, 1)
+        cup_color_names = ['green']
         colors = [utils.COLORS[cn] for cn in cup_color_names]
         sugar_color = utils.COLORS['white']
         coffee_color = utils.COLORS['brown']
@@ -67,12 +68,10 @@ class PutInCupUnSeenColors(Task):
         # objs, matches, targs, replace, rotations, _, _, _ = goal
         self.goals.append(([cubes[0]], np.ones((1, 1)),
                            cup_poses, False, True, 'pose', None, 0.5))
-        self.lang_goals.append(self.lang_template.format(pick="sugar",
-                                                         place=cup_color_names[0]))
+        self.lang_goals.append(self.lang_template)
         self.goals.append(([cubes[1]], np.ones((1, 1)),
                            cup_poses, False, True, 'pose', None, 0.5))
-        self.lang_goals.append(self.lang_template.format(pick="coffee",
-                                                         place=cup_color_names[0]))
+        self.lang_goals.append(self.lang_template)
 
         # Only one mistake allowed.
         self.max_steps = len(cubes) + 1
@@ -110,7 +109,7 @@ class PutInCupUnSeenColors(Task):
         return utils.TRAIN_COLORS if self.mode == 'train' else utils.EVAL_COLORS
 
 
-class PutInCupSeenColors(PutInCupUnSeenColors):
+class PutInGreenCupSeenColors(PutInGreenCupUnSeenColors):
     def __init__(self):
         super().__init__()
 
@@ -118,7 +117,7 @@ class PutInCupSeenColors(PutInCupUnSeenColors):
         return utils.TRAIN_COLORS
 
 
-class PutInCupFull(PutInCupUnSeenColors):
+class PutInGreenCupFull(PutInGreenCupUnSeenColors):
     def __init__(self):
         super().__init__()
 

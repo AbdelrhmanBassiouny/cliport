@@ -43,6 +43,9 @@ from cliport.tasks.towers_of_hanoi_seq import TowersOfHanoiSeqFull
 from cliport.tasks.put_in_cup import PutInCupSeenColors
 from cliport.tasks.put_in_cup import PutInCupUnSeenColors
 from cliport.tasks.put_in_cup import PutInCupFull
+from cliport.tasks.put_in_green_cup import PutInGreenCupSeenColors
+from cliport.tasks.put_in_green_cup import PutInGreenCupUnSeenColors
+from cliport.tasks.put_in_green_cup import PutInGreenCupFull
 
 names = {
     # demo conditioned
@@ -61,6 +64,9 @@ names = {
     'stack-block-pyramid': StackBlockPyramid,
     'sweeping-piles': SweepingPiles,
     'towers-of-hanoi': TowersOfHanoi,
+    'put-in-green-cup-seen-colors': PutInGreenCupSeenColors,
+    'put-in-green-cup-unseen-colors': PutInGreenCupUnSeenColors,
+    'put-in-green-cup-full': PutInGreenCupFull,
 
     # goal conditioned
     'align-rope': AlignRope,
