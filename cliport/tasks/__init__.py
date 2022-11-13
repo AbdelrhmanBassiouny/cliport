@@ -40,6 +40,9 @@ from cliport.tasks.towers_of_hanoi import TowersOfHanoi
 from cliport.tasks.towers_of_hanoi_seq import TowersOfHanoiSeqSeenColors
 from cliport.tasks.towers_of_hanoi_seq import TowersOfHanoiSeqUnseenColors
 from cliport.tasks.towers_of_hanoi_seq import TowersOfHanoiSeqFull
+from cliport.tasks.put_in_cup import PutInCupSeenColors
+from cliport.tasks.put_in_cup import PutInCupUnSeenColors
+from cliport.tasks.put_in_cup import PutInCupFull
 
 names = {
     # demo conditioned
@@ -84,4 +87,7 @@ names = {
     'towers-of-hanoi-seq-seen-colors': TowersOfHanoiSeqSeenColors,
     'towers-of-hanoi-seq-unseen-colors': TowersOfHanoiSeqUnseenColors,
     'towers-of-hanoi-seq-full': TowersOfHanoiSeqFull,
+    'put-in-cup-seen-colors': PutInCupSeenColors,
+    'put-in-cup-unseen-colors': PutInCupUnSeenColors,
+    'put-in-cup-full': PutInCupFull,
 }
