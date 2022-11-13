@@ -15,7 +15,7 @@ class PutInCupUnSeenColors(Task):
         super().__init__()
         self.max_steps = 10
         self.pos_eps = 0.05
-        self.lang_template = "put {place} in the {place} cup"
+        self.lang_template = "put {pick} in the {place} cup"
         self.task_completed_desc = "done placing sugar in cup."
 
     def reset(self, env):
@@ -38,13 +38,13 @@ class PutInCupUnSeenColors(Task):
         for _ in range(n_cups):
             cup_pose = self.get_random_pose(env, cup_size)
             cup_id = env.add_object(cup_urdf, cup_pose, 'fixed')
-            p.changeVisualShape(cup_id, -1, rgbaColor=colors[1] + [1])
+            p.changeVisualShape(cup_id, -1, rgbaColor=colors[0] + [1])
             cup_poses.append(cup_pose)
 
         # Add sugar/coffee cupes.
         cubes = []
-        sugar_size = (0.03, 0.03, 0.01)
-        coffee_size = (0.02, 0.02, 0.01)
+        sugar_size = (0.03, 0.03, 0)
+        coffee_size = (0.02, 0.02, 0)
         cube_urdf = 'stacking/block.urdf'
         for i in range(n_cubes):
             # sugar first
@@ -90,6 +90,7 @@ class PutInCupUnSeenColors(Task):
             else:
                 urdf = cup_urdf
                 colors = distractor_cup_colors
+                size = cup_size
 
             pose = self.get_random_pose(env, size)
             if not pose:
